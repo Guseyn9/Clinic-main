@@ -1,0 +1,34 @@
+import './App.css';
+import Header from './Header';
+import Description from './Description';
+import AboutClinic from './AboutClinic';
+import Footer from './Footer';
+import Droppers from './Droppers';
+import OurSpecialists from './OurSpecialists';
+import Reviews from './Reviews';
+import Services from './Services.jsx';
+import Documents from './Documents.jsx';
+import Contacts from './Contacts';
+import { News } from './News';
+import { Questions } from './Questions.jsx';
+import { Estimation } from './Estimation.jsx';
+
+export default function App() {
+  return (
+    <div className="App">
+      <Header />
+      <Description />
+      <AboutClinic />
+      <Services />
+      <Droppers />
+      <OurSpecialists />
+      <Reviews />
+      <Documents/>
+      <News />
+      <Contacts />
+      <Questions />
+      <Estimation />
+      <Footer />
+    </div>
+  );
+}
