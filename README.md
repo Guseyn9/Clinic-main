@@ -26,7 +26,7 @@
 
 💌 Если хотите сотрудничать или обсудить проект — пишите в [@Bequiet0_0](https://t.me/your_tg)
 
-
+---
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
