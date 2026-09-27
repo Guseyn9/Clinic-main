@@ -1,7 +1,18 @@
+html {
+	scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     background: #F8FFFF;
     font-family: 'Montserrat';
+}
+
+#specialButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
 }
 
 code {
@@ -220,7 +231,7 @@ header {
     color: #70001B;
     transition: 0.2s;
     position: relative;
-    z-index: 10;
+    z-index: 9;
 }
 
 .description-button:hover {
@@ -378,8 +389,13 @@ header {
 }
 
 .services {
+    background-color: #FBFAFE;
+    border-radius: 30px;
+    box-shadow: 0px 1px 15px 2px #0000001c;
     display: flex;
-    padding: 0 30px;
+    padding: 25px;
+    overflow: hidden;
+    gap: 30px;
 }
 
 .services-hover {
@@ -404,7 +420,7 @@ header {
     text-align: center;
     letter-spacing: 0.125em;
     transition: 0.2s;
-    padding: 0;                     
+    padding: 0;
 }
 
 .signup-link {
@@ -429,39 +445,49 @@ header {
 }
 
 .services-point-item {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
+    display: flex;
+    border-radius: 10px;
+    padding: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    align-items: center;
+    transition: background-color .2s ease-in-out;
+    gap: 10px;
+}
+
+.services-point-text {
     font-size: 20px;
+    font-weight: 400;
     line-height: 24px;
     text-align: left;
     letter-spacing: 0.01em;
-
     color: #002726;
-    width: 100%;
-    cursor: pointer;
+    font-family: 'Montserrat';
+    transition: color .2s ease-in-out;
+    font-style: normal;
+}
+
+.point-is-active .services-point-text {
+    color: #0192A4;
+}
+
+.services-point-item img {
+    width: 50px;
+    height: 50px;
+    padding-left: 20px;
 }
 
 .point-is-active {
-    font-weight: 600;
-    color: #00615E;
-    background-image: url("../public/img/icon.svg");
-    background-repeat: no-repeat;
-    background-position: right;
+    font-weight: 500;
+    color: #0192A4;
+    background-color: #D3F1F3;
 }
 
 .services-point {
-    width: 50%;
-}
-
-.services-point > div {
-    border-top: 1px solid #C9C9C9;
-    padding: 15px 0;
-}
-
-.services-point > div:last-child {
-    border-bottom: 1px solid #C9C9C9;
-    padding: 15px 0;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .name-services {
@@ -478,11 +504,10 @@ header {
 .services-list {
     display: flex;
     flex-direction: column;
-    max-height: 400px;
+    max-height: 550px;
     overflow-x: hidden;
     padding-right: 20px;
-    width: 50%;
-    max-width: 620px;
+    flex: 1;
 }
 
 .services-list::-webkit-scrollbar {
@@ -502,16 +527,33 @@ header {
 
 
 .services-list-point {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: serviceFade 0.35s ease forwards;
+    cursor: pointer;
     display: flex;
     text-align: left;
-    padding-bottom: 10px;
+    align-items: center;
+    padding: 10px 0;
     overflow-wrap: anywhere;
     transition: opacity .2s ease-in-out;
 }
 
+@keyframes serviceFade {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
 .services .services-list-point {
-    padding-left: 50px;
+    padding-left: 30px;
     justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .services .services-title {
@@ -523,17 +565,13 @@ header {
     opacity: .6;
 }
 
-.services .services-price {
-    width: 80px;
-}
-
 .services-title {
     display: flex;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 24px;
+    line-height: 31px;
 
     letter-spacing: 0.01em;
 
@@ -550,11 +588,13 @@ header {
 }
 
 .services-price {
+    margin: 0;
     font-family: 'Montserrat';
+    min-width: 100px;
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 22px;
+    line-height: 28px;
     text-align: right;
     letter-spacing: 0.01em;
 
@@ -1026,6 +1066,7 @@ header {
     display: block;
     cursor: pointer;
     border: none;
+    outline: none;
     margin: 0;
     border-top: 1px solid #d9d9d9;
     border-bottom: 1px solid #d9d9d9;
@@ -1038,6 +1079,8 @@ header {
     font-size: 24px;
     font-weight: 500;
     padding: 20px 0;
+    border: none;
+    outline: none;
     color: #000;
     display: flex;
     align-items: center;
@@ -1321,6 +1364,20 @@ footer {
     flex-wrap: wrap;
 }
 
+.gosuslugi-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.gosuslugi-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
 footer > div > h2 {
     font-family: 'Montserrat';
     font-style: normal;
@@ -1470,27 +1527,47 @@ footer > div > h2 {
     .stock-content {
         width: 49%;
     }
+
+    .services-title {
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    .services-price {
+        font-size: 16px;
+        min-width: 80px;
+    }
 }
 
 @media (max-width: 580px) {
+    .services {
+        padding-left: 0;
+        padding-top: 40px;
+    }
+
+    .services-title {
+        padding-left: 25px;
+    }
+    
     .services-point {
         width: 100%;
     }
 
     .services-point-item {
         width: 100%;
-    }
-
-    .services-point > div {
-        padding: 15px 0;
-    }
-
-    .services-point > div:last-child {
-        padding: 15px;
+        border-radius: 0 10px 10px 0;
     }
 
     .stock-content {
         width: 100%;
+    }
+
+    .news-btn {
+        margin-top: 50px;
+    }
+
+    .stock-block-2-text:nth-child(3) {
+        margin-bottom: 0;
     }
 }
 
@@ -1562,8 +1639,7 @@ footer > div > h2 {
     }
 
     .mimi-p, .mini-p {
-        text-align: left;
-        padding-left: 30px;
+        text-align: center;
     }
 
     .mini-p {
@@ -1597,11 +1673,21 @@ footer > div > h2 {
 
     .about-clinic > div > h2, .name-services, .arrows > h2, .our-specialists {
         font-size: 27px;
-        padding-left: 30px;
+        padding-left: 0;
+    }
+
+    .arrows {
+        justify-content: center;
+    }
+
+    .arrows h2, .our-specialists {
+        text-align: center;
     }
 
     .services {
         padding: 0 15px;
+        padding-left: 0;
+        padding-top: 20px;
     }
 
     .services-title {
@@ -1698,19 +1784,41 @@ footer > div > h2 {
 }
 
 @media (max-width: 742px) {
+    .footer {
+        padding: 0;
+    }
     .inc-name {
-        text-align: left;
-        padding-left: 30px;
+        align-items: center;
+    }
+
+    .inc-name p {
+        text-align: center;
     }
 
     .link-footer {
-        text-align: left;
-        justify-content: flex-start;
-        padding-left: 30px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .logo-footer {
-        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .link-footer > a {
+        text-align: center;
+    }
+
+    .gosuslugi-link {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .gosuslugi-icon {
+        width: 60px;
+        height: 60px;
     }
 }
 
