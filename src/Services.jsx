@@ -1,15 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import servicesData from "./servicesData.json";
+import treatment_room from './images/treatment_room.svg'
+import specialists from './images/specialists.svg'
+import otheir_services from './images/otheir_services.svg'
+import massage_room from './images/massage_room.svg'
+import physiotherapy_room from './images/physiotherapy_room.svg'
+import physical_therapy from './images/physical_therapy.svg'
+import laboratory_diagnostics from './images/laboratory_diagnostics.svg'
 
 const servicesList = [
-  { title: "Капельницы", value: "treatment_room" },
-  { title: "Специалисты", value: "specialists" },
-  { title: "Другие услуги", value: "otheir_services" },
-  { title: "Кабинет массажа", value: "massage_room" },
-  { title: "Кабинет физиолечения", value: "physiotherapy_room" },
-  { title: "Лечебная физкультура", value: "physical_therapy" },
-  { title: "Лабораторная диагностика", value: "laboratory_diagnostics" },
+  { title: "Капельницы", value: "treatment_room", icon: treatment_room },
+  { title: "Специалисты", value: "specialists", icon: specialists },
+  { title: "Другие услуги", value: "otheir_services", icon: otheir_services },
+  { title: "Кабинет массажа", value: "massage_room", icon: massage_room },
+  { title: "Кабинет физиолечения", value: "physiotherapy_room", icon: physiotherapy_room },
+  { title: "Лечебная физкультура", value: "physical_therapy", icon: physical_therapy },
+  { title: "Лабораторная диагностика", value: "laboratory_diagnostics", icon: laboratory_diagnostics },
 ];
 
 export default function Services() {
@@ -45,17 +52,22 @@ export default function Services() {
                   key={listItem.value}
                   onClick={() => changeListItemHandle(listItem)}
                 >
-                  {listItem.title}
+                  <img src={listItem.icon} alt="" />
+                  <span className="services-point-text">{listItem.title}</span>
                 </div>
               );
             })}
           </div>
-          <div className="services-list">
-            {servicesData[currentItem.value].map((obj) => {
+          <div className="services-list" key={currentItem.value}>
+            {servicesData[currentItem.value].map((obj, index) => {
               return (
-                <div className="services-list-point">
+                <div 
+                  className="services-list-point"
+                  style={{ animationDelay: `${index * 0.08}s` }}
+                  key={obj.title}
+                >
                   <p className="services-title">{obj.title}</p>
-                  <p className="services-price">{obj.price}</p>
+                  <p className="services-price">{obj.price} ₽</p>
                 </div>
               );
             })}
